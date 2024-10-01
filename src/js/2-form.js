@@ -8,7 +8,7 @@ const formData = { email: '', message: '' };
 form.addEventListener('submit', onFormSubmit);
 
 form.addEventListener('input', function onFormInput(evt) {
-  formData[evt.target.name] = evt.target.value;
+  formData[evt.target.name] = evt.target.value.trim();
 
   localStorage.setItem(localStorageKey, JSON.stringify(formData));
 });
@@ -26,10 +26,12 @@ function storageData(email, message) {
 }
 
 function onFormSubmit(evt) {
+  evt.preventDefault();
   if (!formData.email || !formData.message) {
     alert('Fill please all field');
+    return;
   }
-  evt.preventDefault();
-  evt.target.reset();
+  console.log(formData);
   localStorage.removeItem(localStorageKey);
+  form.reset();
 }
