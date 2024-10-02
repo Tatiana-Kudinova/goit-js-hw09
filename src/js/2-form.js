@@ -22,8 +22,13 @@ function storageData(email, message) {
   if (savedData) {
     form.email.value = savedData.email;
     form.message.value = savedData.message;
+    form.elements.email = formData.email;
+    form.elements.message = formData.message;
   }
 }
+
+console.log(formData.message);
+console.log(formData.email);
 
 function onFormSubmit(evt) {
   evt.preventDefault();
@@ -32,6 +37,8 @@ function onFormSubmit(evt) {
     return;
   }
   console.log(formData);
+  console.log('email:', formData.email);
+  console.log('message:', formData.message);
   localStorage.removeItem(localStorageKey);
   form.reset();
 }
