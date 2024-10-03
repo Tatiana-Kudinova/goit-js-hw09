@@ -20,25 +20,21 @@ storageData();
 
 function storageData(email, message) {
   if (savedData) {
-    form.email.value = savedData.email;
-    form.message.value = savedData.message;
-    form.elements.email = formData.email;
-    form.elements.message = formData.message;
+    form.elements.email.value = savedData.email;
+    form.elements.message.value = savedData.message;
   }
 }
-
-console.log(formData.message);
-console.log(formData.email);
 
 function onFormSubmit(evt) {
   evt.preventDefault();
   if (!formData.email || !formData.message) {
-    alert('Fill please all field');
+    alert('Fill please all fields');
     return;
   }
-  console.log(formData);
+
   console.log('email:', formData.email);
   console.log('message:', formData.message);
+
   localStorage.removeItem(localStorageKey);
   form.reset();
 }
